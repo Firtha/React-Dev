@@ -1,0 +1,16 @@
+{
+    "coins":[
+        {
+            "name": "BTC/USDT",
+            "startValue": 49500.49,
+            "currentValue": 49500.49,
+            "percentage": 0.0
+        },
+        {
+            "name": "ETH/USDT",
+            "startValue": 1800.55,
+            "currentValue": 1800.55,
+            "percentage": 0.0
+        }
+    ]
+}

@@ -1,0 +1,29 @@
+{
+    "wallets":[
+        {
+            "name": "MainWallet",
+            "holds":[
+                {
+                    "coin": "BTC/USDT",
+                    "amount": 4.5501546,
+                    "price": 49000.255
+                },
+                {
+                    "coin": "ETH/USDT",
+                    "amount": 24.492456,
+                    "price": 1800.01
+                }
+            ]
+        },
+        {
+            "name": "LightWallet",
+            "holds":[
+                {
+                    "coin": "ETH/USDT",
+                    "amount": 2,
+                    "price": 1754.15
+                }
+            ]
+        }
+    ]
+}
