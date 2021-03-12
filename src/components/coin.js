@@ -9,7 +9,7 @@ import './../index.css';
 export default class Coin extends React.Component {
     constructor(props) {
       super(props);
-      this.state = {coins: Coins.coins, newCoin: "", isToggleOn: false};
+      this.state = {coins: Coins.coins, newCoin: "", showMyForm: false};
 
       this.handleClick = this.handleClick.bind(this);
     }
@@ -68,13 +68,39 @@ export default class Coin extends React.Component {
 
     handleClick() {
         this.setState(state => ({
-          isToggleOn: !state.isToggleOn
+            showMyForm: !state.showMyForm
         }));
     }
   
     render() {
       return (
         <div>
+            { 
+                this.state.showMyForm ? 
+                    <div>
+                        <Button variant="outline-info" onClick={this.handleClick}>
+                            Hide
+                        </Button>
+                        <Form>
+                            <Form.Group controlId="formNewCoin">
+                                <Form.Label>New Coin to observ ?</Form.Label>
+                                <Form.Control type="text" placeholder="BTC/USDT ?" />
+                                <Form.Text className="text-muted">
+                                    We will retrieve the current value of this coin on platforms that list it.
+                                </Form.Text>
+                            </Form.Group>
+
+                            <Button variant="primary" type="submit" onClick={this.handleClick}>
+                                Submit
+                            </Button>
+                        </Form>
+                    </div>
+                : 
+                    <Button variant="outline-info" onClick={this.handleClick}>
+                        List a coin
+                    </Button>
+            }
+
             <ul>
                 {
                     this.state.coins.map(function(coin){
@@ -82,20 +108,6 @@ export default class Coin extends React.Component {
                     })
                 }
             </ul>
-
-            <Form>
-                <Form.Group controlId="formNewCoin">
-                    <Form.Label>New Coin to observ ?</Form.Label>
-                    <Form.Control type="text" placeholder="BTC/USDT ?" />
-                    <Form.Text className="text-muted">
-                        We will retrieve the current value of this coin on platforms that list it.
-                    </Form.Text>
-                </Form.Group>
-
-                <Button variant="primary" type="submit" onClick={this.handleClick}>
-                    Submit
-                </Button>
-            </Form>
         </div>
       );
     }
