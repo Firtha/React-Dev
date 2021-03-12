@@ -22,15 +22,22 @@ export default class Wallet extends React.Component {
             wallet = Wallets.wallets[0]
         }
 
-        this.state = {wallets: Wallets.wallets, selectedWallet: wallet, showMyForm: false};
+        this.state = {wallets: Wallets.wallets, selectedWallet: wallet, showMyForm: false, showMyFormBis: false};
 
         this.handleClick = this.handleClick.bind(this);
+        this.handleClickBis = this.handleClickBis.bind(this);
         this.selectWallet = this.selectWallet.bind(this);
     }
 
     handleClick() {
         this.setState(state => ({
             showMyForm: !state.showMyForm
+        }));
+    }
+
+    handleClickBis() {
+        this.setState(state => ({
+            showMyFormBis: !state.showMyFormBis
         }));
     }
 
@@ -46,29 +53,7 @@ export default class Wallet extends React.Component {
             <div className="container">
                 <div className="row">
                     <div className="col-4">
-
-                        { 
-                            this.state.showMyForm ? 
-                                <div>
-                                    <Button variant="outline-info" onClick={this.handleClick}>
-                                        Hide
-                                    </Button>
-                                    <Form>
-                                        <Form.Group controlId="formNewWallet">
-                                            <Form.Label>New Wallet</Form.Label>
-                                            <Form.Control type="text" placeholder="MyLovelyWallet ?" />
-                                        </Form.Group>
-
-                                        <Button variant="primary" type="submit">
-                                            Submit
-                                        </Button>
-                                    </Form>
-                                </div>
-                            : 
-                                <Button variant="outline-info" onClick={this.handleClick}>
-                                    Create new
-                                </Button>
-                        }
+                        <h4>Registered wallets</h4>
 
                         <ul>
                             {
@@ -82,6 +67,29 @@ export default class Wallet extends React.Component {
                                 })
                             }
                         </ul>
+
+                        { 
+                            this.state.showMyForm ? 
+                                <div>
+                                    <Button variant="outline-info" onClick={this.handleClick}>
+                                        Hide
+                                    </Button>
+                                    <Form>
+                                        <Form.Group controlId="formNewWallet">
+                                            <Form.Label>New Wallet Name</Form.Label>
+                                            <Form.Control type="text" placeholder="MyLovelyWallet ?" />
+                                        </Form.Group>
+
+                                        <Button variant="primary" type="submit">
+                                            Submit
+                                        </Button>
+                                    </Form>
+                                </div>
+                            : 
+                                <Button variant="outline-info" onClick={this.handleClick}>
+                                    Create new
+                                </Button>
+                        }
                     </div>
                     <div className="col-8">
                         <div className="row">
@@ -102,6 +110,37 @@ export default class Wallet extends React.Component {
                                         </div>
                                     </div>;
                             })
+                        }
+
+                        { 
+                            this.state.showMyFormBis ? 
+                                <div>
+                                    <Button variant="outline-info" onClick={this.handleClickBis}>
+                                        Hide
+                                    </Button>
+                                    <Form>
+                                        <Form.Group controlId="formNewCoin">
+                                            <Form.Label>Coin</Form.Label>
+                                            <Form.Control type="text" placeholder="BTC/USDT ?" />
+                                        </Form.Group>
+                                        <Form.Group controlId="formNewPrice">
+                                            <Form.Label>Price</Form.Label>
+                                            <Form.Control type="text" placeholder="48000" />
+                                        </Form.Group>
+                                        <Form.Group controlId="formNewAmount">
+                                            <Form.Label>Amount</Form.Label>
+                                            <Form.Control type="text" placeholder="0.5" />
+                                        </Form.Group>
+
+                                        <Button variant="primary" type="submit">
+                                            Register
+                                        </Button>
+                                    </Form>
+                                </div>
+                            : 
+                                <Button variant="outline-info" onClick={this.handleClickBis}>
+                                    Register transaction
+                                </Button>
                         }
                     </div>
                 </div>

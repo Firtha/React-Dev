@@ -75,6 +75,15 @@ export default class Coin extends React.Component {
     render() {
       return (
         <div>
+            <h4>Observed coins</h4>
+            <ul>
+                {
+                    this.state.coins.map(function(coin){
+                        return <li key={ coin.name }>{ coin.name }: { coin.percentage }%<br/>{ coin.currentValue }</li>;
+                    })
+                }
+            </ul>
+
             { 
                 this.state.showMyForm ? 
                     <div>
@@ -100,14 +109,6 @@ export default class Coin extends React.Component {
                         List a coin
                     </Button>
             }
-
-            <ul>
-                {
-                    this.state.coins.map(function(coin){
-                        return <li key={ coin.name }>{ coin.name }: { coin.percentage }%<br/>{ coin.currentValue }</li>;
-                    })
-                }
-            </ul>
         </div>
       );
     }
